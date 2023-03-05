@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body id="mybody">
+  <canvas id="cnv"></canvas>  
+<img id="pois1"src="https://i.imgur.com/mIGCTgU.jpg" >
+
+
+<style>
+#mybody{
+   background-color:blue;
+
+}
+#cnv{
+  position:fixed;
+}
+#pois1{
+  position:fixed;
+  display:none;
+}
+
+
+
+</style>
+
+
+
+<script>
+var cnv=document.getElementById("cnv");
+var ctx=cnv.getContext('2d');
+
+cnv.width=window.innerWidth;
+cnv.height=window.innerHeight;
+
+var increment=0;
+
+var posFish=0;
+
+var posYdeBase=cnv.height;
+var posBulle1=0;
+var posBulle2=0;
+var posBulle3=0;
+var posBulle4=0;
+var posBulle5=0;
+var speed=0;
+
+var random=Math.round(Math.random(10)*10);
+
+var img1=document.getElementById("pois1");
+
+function anim(){
+//increment+=1;
+//speed+=0.01;
+//posYdeBase--;
+
+
+//console.log(speed);
+
+
+if(posYdeBase>0){
+posYdeBase--;
+posBulle2-=3;
+posBulle3-=2;
+posBulle4--;
+posBulle5--;
+
+}else{
+    posYdeBase=cnv.height;
+    posBulle2=cnv.height;
+    posBulle3=cnv.height;
+    posBulle4=cnv.height;
+        posBulle5=cnv.height;
+
+}
+
+
+
+ctx.clearRect(0,0,cnv.width,cnv.height);
+ctx.beginPath();
+ctx.strokeStyle="white";
+
+
+//for(var i=0;i<10;i++){
+    
+ctx.arc(100,posYdeBase,10,0,2*Math.PI,true);
+
+ctx.stroke();
+
+
+ctx.beginPath();
+ctx.arc(200,posBulle2+300,10,0,2*Math.PI,true);
+ctx.stroke();
+
+
+ctx.beginPath();
+ctx.arc(250,posBulle3+400,10,0,2*Math.PI,true);
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(50,posBulle4+400,05,0,2*Math.PI,true);
+
+
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(300,posBulle5+100,05,0,2*Math.PI,true);
+
+
+ctx.stroke();
+
+
+if(posFish<420){
+  posFish++;
+}else{
+  posFish=-200;
+}
+
+
+ctx.drawImage(img1,posFish,200,200,200);
+//posBulle=0?posBulle==400:"";
+
+
+//console.log(posBulle);
+
+    requestAnimationFrame(anim);
+
+}
+anim();
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</body>
+</html>
